@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Companhia da Pesca</title>
+<meta name="description" content="Contato direto com as vendedoras autorizadas da Companhia da Pesca e Companhia do Sport." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f5f1e7;
+    --paper-soft:#ece5d4;
+    --ink:#171512;
+    --ink-soft:#6b6459;
+    --line:#ddd3bd;
+    --card:#fffdf8;
+    --red:#c8281f;
+    --red-ink:#7d1712;
+    --navy:#16224e;
+    --shadow: 0 1px 0 rgba(23,21,18,.05);
+    --accent:var(--red);
+    --accent-soft:#f3ded9;
+    font-family:'Manrope',ui-sans-serif,system-ui,-apple-system,sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    margin:0;
+  }
+  .bg{
+    position:fixed;
+    inset:0;
+    background-image:
+      radial-gradient(circle at 1px 1px, var(--line) 1px, transparent 0);
+    background-size:22px 22px;
+    opacity:.55;
+    pointer-events:none;
+    z-index:0;
+  }
+  .wrap{
+    position:relative;
+    z-index:1;
+    max-width:460px;
+    margin:0 auto;
+    padding:40px 20px 56px;
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:16px;
+  }
+  .lockup{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    width:100%;
+  }
+  .lockup img{
+    height:64px;
+    width:auto;
+    object-fit:contain;
+  }
+  #logo-sport{height:76px;}
+  .lockup .x{
+    font-family:'Bebas Neue',ui-sans-serif,system-ui,sans-serif;
+    font-size:22px;
+    color:var(--ink-soft);
+    letter-spacing:.02em;
+  }
+  .eyebrow{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  h1{
+    font-family:'Bebas Neue',ui-sans-serif,system-ui,sans-serif;
+    font-size:clamp(30px,7vw,38px);
+    line-height:1.05;
+    letter-spacing:.01em;
+    margin:0;
+    text-wrap:balance;
+  }
+  .sub{
+    font-size:15px;
+    line-height:1.5;
+    color:var(--ink-soft);
+    max-width:34ch;
+    margin:0;
+  }
+
+  /* ---------- Brand toggle ---------- */
+  .toggle{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6px;
+    background:var(--paper-soft);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:5px;
+  }
+  .toggle button{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    font-family:'Manrope',sans-serif;
+    font-weight:700;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    background:transparent;
+    border:0;
+    border-radius:10px;
+    padding:10px 8px;
+    cursor:pointer;
+    transition:background .18s ease, color .18s ease, box-shadow .18s ease;
+  }
+  .toggle button img{height:16px;width:auto;object-fit:contain;}
+  .toggle button.active{
+    background:var(--card);
+    color:var(--ink);
+    box-shadow:var(--shadow), 0 1px 6px rgba(0,0,0,.08);
+  }
+  .brand-copy{
+    text-align:center;
+    font-size:14px;
+    line-height:1.55;
+    color:var(--ink-soft);
+    min-height:44px;
+  }
+  .brand-copy b{color:var(--ink);}
+
+  /* ---------- Section heading ---------- */
+  .section-head{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+  .section-head .eyebrow{color:var(--accent);}
+  .section-head h2{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:22px;
+    letter-spacing:.01em;
+    margin:0;
+  }
+
+  /* ---------- Vendor cards ---------- */
+  .vendors{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .vendor{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:10px 14px 10px 10px;
+    text-decoration:none;
+    color:inherit;
+    box-shadow:var(--shadow);
+    transition:transform .12s ease, border-color .12s ease;
+  }
+  .vendor:hover{border-color:var(--accent); transform:translateY(-1px);}
+  .vendor:active{transform:translateY(0);}
+  .vendor img.avatar{
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    object-fit:cover;
+    flex:none;
+    border:2px solid var(--paper-soft);
+  }
+  .vendor-info{
+    flex:1;
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .vendor-name{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:19px;
+    letter-spacing:.01em;
+    line-height:1.1;
+  }
+  .vendor-role{
+    font-size:12px;
+    color:var(--ink-soft);
+    font-weight:600;
+  }
+  .wa-btn{
+    flex:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:var(--accent-soft);
+    color:var(--red-ink);
+  }
+  .wa-btn svg{width:19px;height:19px;}
+
+  /* ---------- Hours card ---------- */
+  .hours{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:var(--paper-soft);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:14px 16px;
+  }
+  .hours svg{flex:none;width:20px;height:20px;color:var(--accent);}
+  .hours-text{font-size:13px;line-height:1.5;color:var(--ink-soft);}
+  .hours-text b{color:var(--ink);font-weight:700;}
+
+  footer{
+    text-align:center;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    letter-spacing:.03em;
+  }
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="eyebrow">Goiás &middot; Atendimento via WhatsApp</span>
+    <div class="lockup">
+      <img id="logo-pesca" src="assets/logo_pesca.png" alt="Companhia da Pesca" />
+      <span class="x">&times;</span>
+      <img id="logo-sport" src="assets/logo_sport.png" alt="Companhia do Sport" />
+    </div>
+    <p class="sub">Equipamentos de pesca e vestuário esportivo. Fale direto com uma vendedora autorizada.</p>
+  </div>
+
+  <div>
+    <div class="toggle" role="tablist" aria-label="Escolher marca">
+      <button type="button" class="active" id="tab-pesca" aria-selected="true">
+        <img src="assets/logo_pesca.png" alt="" />Pesca
+      </button>
+      <button type="button" id="tab-sport" aria-selected="false">
+        <img src="assets/logo_sport.png" alt="" />Sport
+      </button>
+    </div>
+    <p class="brand-copy" id="brand-copy">
+      <b>Companhia da Pesca</b> &mdash; iscas, molinetes e vestuário técnico para quem vive a pescaria.
+    </p>
+  </div>
+
+  <div class="section-head">
+    <span class="eyebrow">Fale agora</span>
+    <h2>Vendedoras autorizadas</h2>
+  </div>
+
+  <div class="vendors">
+    <a class="vendor" id="v-mariaeduarda" href="#" target="_blank" rel="noopener">
+      <img class="avatar" src="assets/foto_mariaeduarda.jpg" alt="Maria Eduarda" />
+      <div class="vendor-info">
+        <span class="vendor-name">Maria Eduarda</span>
+        <span class="vendor-role">Vendedora autorizada</span>
+      </div>
+      <span class="wa-btn" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.05 22c-1.703 0-3.383-.44-4.868-1.276L2 22l1.32-4.868A9.94 9.94 0 0 1 2.1 12.05C2.1 6.5 6.6 2 12.15 2 17.7 2 22.2 6.5 22.2 12.05 22.2 17.6 17.7 22.1 12.15 22.1Zm0-18.2C7.66 3.8 4 7.46 4 11.95c0 1.66.49 3.21 1.33 4.51l-.9 3.31 3.39-.89a8.13 8.13 0 0 0 4.23 1.17c4.49 0 8.15-3.66 8.15-8.15S16.54 3.8 12.05 3.8Z"/></svg>
+      </span>
+    </a>
+
+    <a class="vendor" id="v-fran" href="#" target="_blank" rel="noopener">
+      <img class="avatar" src="assets/foto_fran.jpg" alt="Fran" />
+      <div class="vendor-info">
+        <span class="vendor-name">Fran</span>
+        <span class="vendor-role">Vendedora autorizada</span>
+      </div>
+      <span class="wa-btn" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.05 22c-1.703 0-3.383-.44-4.868-1.276L2 22l1.32-4.868A9.94 9.94 0 0 1 2.1 12.05C2.1 6.5 6.6 2 12.15 2 17.7 2 22.2 6.5 22.2 12.05 22.2 17.6 17.7 22.1 12.15 22.1Zm0-18.2C7.66 3.8 4 7.46 4 11.95c0 1.66.49 3.21 1.33 4.51l-.9 3.31 3.39-.89a8.13 8.13 0 0 0 4.23 1.17c4.49 0 8.15-3.66 8.15-8.15S16.54 3.8 12.05 3.8Z"/></svg>
+      </span>
+    </a>
+
+    <a class="vendor" id="v-maynara" href="#" target="_blank" rel="noopener">
+      <img class="avatar" src="assets/foto_maynara.jpg" alt="Maynara" />
+      <div class="vendor-info">
+        <span class="vendor-name">Maynara</span>
+        <span class="vendor-role">Vendedora autorizada</span>
+      </div>
+      <span class="wa-btn" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.05 22c-1.703 0-3.383-.44-4.868-1.276L2 22l1.32-4.868A9.94 9.94 0 0 1 2.1 12.05C2.1 6.5 6.6 2 12.15 2 17.7 2 22.2 6.5 22.2 12.05 22.2 17.6 17.7 22.1 12.15 22.1Zm0-18.2C7.66 3.8 4 7.46 4 11.95c0 1.66.49 3.21 1.33 4.51l-.9 3.31 3.39-.89a8.13 8.13 0 0 0 4.23 1.17c4.49 0 8.15-3.66 8.15-8.15S16.54 3.8 12.05 3.8Z"/></svg>
+      </span>
+    </a>
+
+    <a class="vendor" id="v-thallyta" href="#" target="_blank" rel="noopener">
+      <img class="avatar" src="assets/foto_thallyta.jpg" alt="Thallyta" />
+      <div class="vendor-info">
+        <span class="vendor-name">Thallyta</span>
+        <span class="vendor-role">Vendedora autorizada</span>
+      </div>
+      <span class="wa-btn" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.05 22c-1.703 0-3.383-.44-4.868-1.276L2 22l1.32-4.868A9.94 9.94 0 0 1 2.1 12.05C2.1 6.5 6.6 2 12.15 2 17.7 2 22.2 6.5 22.2 12.05 22.2 17.6 17.7 22.1 12.15 22.1Zm0-18.2C7.66 3.8 4 7.46 4 11.95c0 1.66.49 3.21 1.33 4.51l-.9 3.31 3.39-.89a8.13 8.13 0 0 0 4.23 1.17c4.49 0 8.15-3.66 8.15-8.15S16.54 3.8 12.05 3.8Z"/></svg>
+      </span>
+    </a>
+  </div>
+
+  <div class="hours">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <p class="hours-text"><b>Horário de atendimento</b><br/>Segunda a sexta &middot; 08h00&ndash;12h00 e 13h00&ndash;18h00</p>
+  </div>
+
+  <footer>COMPANHIA DA PESCA &amp; COMPANHIA DO SPORT</footer>
+</div>
+
+<script>
+(function(){
+  var vendors = [
+    { id:'v-mariaeduarda', name:'Maria Eduarda', phone:'556296061398' },
+    { id:'v-fran', name:'Fran', phone:'556294500505' },
+    { id:'v-maynara', name:'Maynara', phone:'556299595198' },
+    { id:'v-thallyta', name:'Thallyta', phone:'556299310453' }
+  ];
+  vendors.forEach(function(v){
+    var el = document.getElementById(v.id);
+    if(!el) return;
+    var msg = 'Olá, ' + v.name + '! Vim pelo site da Companhia da Pesca e Companhia do Sport e gostaria de saber mais.';
+    el.href = 'https://wa.me/' + v.phone + '?text=' + encodeURIComponent(msg);
+  });
+
+  var brandCopy = {
+    pesca: '<b>Companhia da Pesca</b> — iscas, molinetes e vestuário técnico para quem vive a pescaria.',
+    sport: '<b>Companhia do Sport</b> — referência em vestuário esportivo, camisas e uniformes.'
+  };
+  var tabPesca = document.getElementById('tab-pesca');
+  var tabSport = document.getElementById('tab-sport');
+  var copyEl = document.getElementById('brand-copy');
+
+  function setBrand(brand){
+    var isPesca = brand === 'pesca';
+    tabPesca.classList.toggle('active', isPesca);
+    tabSport.classList.toggle('active', !isPesca);
+    tabPesca.setAttribute('aria-selected', isPesca);
+    tabSport.setAttribute('aria-selected', !isPesca);
+    copyEl.innerHTML = brandCopy[brand];
+  }
+  tabPesca.addEventListener('click', function(){ setBrand('pesca'); });
+  tabSport.addEventListener('click', function(){ setBrand('sport'); });
+  setBrand('pesca');
+})();
+</script>
+</body>
+</html>
