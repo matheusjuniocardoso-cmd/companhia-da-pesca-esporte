@@ -232,6 +232,32 @@
   .hours-text b{color:var(--ink);font-weight:700;}
 
   footer{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+  }
+  .social{
+    display:flex;
+    gap:10px;
+  }
+  .social a{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    font-size:12.5px;
+    font-weight:700;
+    color:var(--ink);
+    text-decoration:none;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:8px 14px;
+    transition:border-color .12s ease, transform .12s ease;
+  }
+  .social a:hover{border-color:var(--accent); transform:translateY(-1px);}
+  .social svg{width:15px;height:15px;flex:none;color:var(--accent);}
+  .credit{
     text-align:center;
     font-size:11.5px;
     color:var(--ink-soft);
@@ -264,7 +290,7 @@
       </button>
     </div>
     <p class="brand-copy" id="brand-copy">
-      <b>Companhia da Pesca</b> &mdash; iscas, molinetes e vestuário técnico para quem vive a pescaria.
+      <b>Companhia da Pesca</b> &mdash; vestuário técnico para quem vive a pescaria.
     </p>
   </div>
 
@@ -324,7 +350,19 @@
     <p class="hours-text"><b>Horário de atendimento</b><br/>Segunda a sexta &middot; 08h00&ndash;12h00 e 13h00&ndash;18h00</p>
   </div>
 
-  <footer>COMPANHIA DA PESCA &amp; COMPANHIA DO SPORT</footer>
+  <footer>
+    <div class="social">
+      <a href="https://www.instagram.com/companhiadapescavestuario/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        Pesca
+      </a>
+      <a href="https://www.instagram.com/companhiadosport/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        Sport
+      </a>
+    </div>
+    <p class="credit">COMPANHIA DA PESCA &amp; COMPANHIA DO SPORT</p>
+  </footer>
 </div>
 
 <script>
@@ -343,7 +381,7 @@
   });
 
   var brandCopy = {
-    pesca: '<b>Companhia da Pesca</b> — iscas, molinetes e vestuário técnico para quem vive a pescaria.',
+    pesca: '<b>Companhia da Pesca</b> — vestuário técnico para quem vive a pescaria.',
     sport: '<b>Companhia do Sport</b> — referência em vestuário esportivo, camisas e uniformes.'
   };
   var tabPesca = document.getElementById('tab-pesca');
